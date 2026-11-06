@@ -37,6 +37,24 @@ python code/07_jones_polynomial.py
 python code/08_diagram_equivalence.py
 ```
 
+To generate the updated ring model and its construction stages, run:
+
+```sh
+python code/verify_geometry.py
+python code/render_construction.py
+```
+
+The updated model is evaluated by `refined_points` in
+`code/geometry.py`. It adds small variations to the faces and
+rims while retaining the two defining link curves.
+
+The new renderer saves `03-compact-ring.png` and
+`06-compact-with-curves.png`. These are the updated model images;
+`03_modeling_ring.py` alone generates the earlier model.
+
+See `Construction.pdf` for the mathematical construction and
+`Construction.tex` for its editable source.
+
 The 3D ring script is the most demanding; it renders a large intermediate framebuffer before exporting the PNGs.
 
 | Poster block | Script | Mathematical PNGs |
@@ -57,11 +75,3 @@ Each script lists its output filenames at the beginning. Comments before the ind
 The fixed diagrams use explicit vector outlines stored in `code/geometry/`. These outlines include the curves, crossing gaps, dots, arrows and lettering. The scripts assemble SVG drawings from those coordinates, then render transparent PNGs; they do not read the poster PNGs to create the mathematical illustrations.
 
 The 3D models use parametric surfaces, gold materials and depth-tested red/blue boundary curves. The deformation script interpolates and smooths the stored curve geometry. The Jones script computes each state's smoothings and loop count, preserving the tree's layout and labels. It also checks the bracket simplification and all 16 rendered final loop counts.
-
-The generated images closely match the poster figures. Minor rasterization, edge, material or smoothing-shape differences can occur; the five deformation PNGs and several model images match the supplied originals exactly in the checked environment. Different rendering libraries or graphics drivers can introduce small visual differences.
-
-## Use in the poster
-
-Upload the PNGs from `figures/` to the poster's existing `figures/` folder in Overleaf. The filenames are unchanged, so the corresponding image commands can stay as they are. Retain the poster's existing SLU logo.
-
-The unused `root.png` and alternate `fox3_gold.png` are omitted; the complete Jones tree and the gold diagram used by the poster remain included. Keep the physical ring photograph as an image asset.
