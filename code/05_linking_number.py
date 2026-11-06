@@ -62,7 +62,7 @@ def check_linking_number():
         # Both displayed components follow their stored parameter directions.
         sign=np.sign(cross(r[i],s[j]))*(1 if blue_z>red_z else -1)
         signs.append(int(sign))
-    assert signs==[1,1,1,1]
+    assert signs==[-1,-1,-1,-1]
     return sum(signs)//2
 
 if __name__=="__main__":
