@@ -59,8 +59,8 @@ def check_linking_number():
     for i,j in zip(*np.where((abs(den)>1e-10)&(t>=0)&(t<1)&(u>=0)&(u<1))):
         blue_z=np.interp(i+t[i,j],np.arange(len(p)),p[:,2])
         red_z=np.interp(j+u[i,j],np.arange(len(q)),q[:,2])
-        # The red orientation in the displayed diagram reverses its stored parameter.
-        sign=-np.sign(cross(r[i],s[j]))*(1 if blue_z>red_z else -1)
+        # Both displayed components follow their stored parameter directions.
+        sign=np.sign(cross(r[i],s[j]))*(1 if blue_z>red_z else -1)
         signs.append(int(sign))
     assert signs==[1,1,1,1]
     return sum(signs)//2
